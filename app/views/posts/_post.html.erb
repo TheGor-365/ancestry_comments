@@ -1,0 +1,11 @@
+<div id="<%= dom_id post %>" class="border p-5">
+  <p class="display-6">
+    <%= post.title %>
+  </p>
+  <p>
+    <%= post.body %>
+  </p>
+  <small class="text-muted">
+    Author: <span class="text-success"><%= post.user.email %></span>
+  </small>
+</div>

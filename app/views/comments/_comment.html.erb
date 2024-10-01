@@ -1,0 +1,11 @@
+<div id="<%= dom_id comment %>" class="border p-5">
+  <p>
+    <%= comment.content %>
+  </p>
+  <small class="text-muted">
+    Author: <span class="text-success"><%= comment.user.email %></span>
+  </small><br>
+  <small class="text-muted">
+    Post: <span class="text-success"><%= comment.post.title %></span>
+  </small>
+</div>
