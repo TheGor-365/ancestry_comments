@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = Comment.find(params[:id])
   end
 
   def new
@@ -20,7 +21,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-      redirect_to @post, notice: "Post was successfully created"
+      redirect_to post_path(@post), notice: "Post was successfully created"
     else
       render :new, status: :unprocessable_entity
     end

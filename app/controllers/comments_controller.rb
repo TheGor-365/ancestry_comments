@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   def index
     @comments = Comment.all
@@ -19,7 +20,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
 
     if @comment.save
-      redirect_to @comment, notice: "Comment was successfully created"
+      redirect_to @comment.post, notice: "Comment was successfully created"
     else
       render :new, status: :unprocessable_entity
     end
