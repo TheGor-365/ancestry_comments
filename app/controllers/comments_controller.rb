@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @comment = Comment.new
+    @comment = Comment.new(parent_id: params[:parent_id])
   end
 
   def edit
@@ -46,6 +46,12 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:content, :user_id, :post_id)
+    params.require(:comment).permit(
+      :content,
+      :user_id,
+      :post_id,
+      :parent_id,
+      :ancestry
+    )
   end
 end

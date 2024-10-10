@@ -1,0 +1,7 @@
+<%= simple_form_for @comment.children.new do |f| %>
+  <%= f.input :parent_id, input_html: { value: parent.id }, as: :hidden %>
+  <%= f.input :user_id, input_html: { value: current_user.id }, as: :hidden %>
+  <%= f.input :post_id, input_html: { value: @post.id }, as: :hidden %>
+  <%= f.input :content, as: :text, label: false, input_html: { autocomplete: 'off' } %>
+  <%= f.button :submit, class: "btn btn-sm btn-outline-success" %>
+<% end %>

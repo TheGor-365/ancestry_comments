@@ -1,11 +1,8 @@
 <div class="border p-5">
-  <%= simple_form_for(@comment) do |f| %>
-    <%= f.error_notification %>
-    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-    <%= f.input :content %>
-    <%= f.association :user, label_method: :email %>
-    <%= f.association :post, label_method: :title %>
+  <%= simple_form_for @post.comments.new, method: :post do |f| %>
+    <%= f.input :user_id, input_html: { value: current_user.id }, as: :hidden %>
+    <%= f.input :post_id, input_html: { value: @post.id }, as: :hidden %>
+    <%= f.input :content, as: :text, label: false, input_html: { autocomplete: 'off' } %>
     <%= f.button :submit, class: "btn btn-sm btn-outline-success" %>
   <% end %>
 </div>
