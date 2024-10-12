@@ -7,8 +7,6 @@
 </h6>
 
 <%= render 'comments/form' %><br>
-<%#= render @post.comments.order(id: :desc) %>
-<%#= render partial: Comment.all.where(post_id: @post.id) %>
 <%= render 'comments/comment', comment: @post.comments.first, post: @comment.post %>
 
 <div class="btn-group my-5">
