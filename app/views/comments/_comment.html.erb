@@ -21,6 +21,6 @@
     </div>
   </div>
   <div class="mt-3">
-    <%= render comment.children.order(id: :asc) %>
+    <%= render comment.children.order(id: :asc) if comment.children.length > 0 %>
   </div>
 </div>
