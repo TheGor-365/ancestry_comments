@@ -6,8 +6,12 @@
   <small class="text-muted">
     Post: <span class="text-success"><%= comment.post.title %></span>
   </small>
+  <div class="mt-3">
+    <%= render comment.children.order(id: :asc) if comment.children.length > 0 %>
+  </div>
   <div class="mt-2">
     <a
+      data-bs-target="#comment_<%= comment.id %>"
       data-bs-toggle="collapse"
       href="#comment_<%= comment.id %>"
       role="button"
@@ -16,11 +20,8 @@
     >
       Reply
     </a>
-    <div class="collapse" id="comment_<%= comment.id %>">
+    <div class="collapse mx-2" id="comment_<%= comment.id %>">
       <%= render partial: 'comments/reply_comment', locals: { parent: comment } %>
     </div>
-  </div>
-  <div class="mt-3">
-    <%= render comment.children.order(id: :asc) if comment.children.length > 0 %>
   </div>
 </div>
